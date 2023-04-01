@@ -10,8 +10,8 @@ config_version=4
 
 [application]
 
-config/name="3D Template"
-run/main_scene="res://Game.tscn"
+config/name="05-FPS-Maze"
+run/main_scene="res://UI/Main.tscn"
 config/icon="res://icon.png"
 
 [autoload]
