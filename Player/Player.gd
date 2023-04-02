@@ -3,11 +3,15 @@ extends KinematicBody
 onready var Camera = $Pivot/Camera
 
 var gravity = -30
-var max_speed = 8
+var max_speed = 9
 var mouse_sensitivity = 0.002
 var mouse_range = 1.2
-
+var grounded = true
 var velocity = Vector3()
+
+onready var rc = $Pivot/RayCast
+onready var flash = $Pivot/blaster/Flash
+onready var Decal = preload('res://Player/Decal.tscn')
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -39,3 +43,17 @@ func _physics_process(delta):
 	velocity.x = desired_velocity.x
 	velocity.z = desired_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+	if is_on_floor():
+		grounded = true
+	
+	if Input.is_action_pressed('shoot') and !flash.visible:
+		flash.shoot()
+		print(global_translation)
+		if rc.is_colliding():
+			var c = rc.get_collider()
+			var decal = Decal.instance()
+			rc.get_collider().add_child(decal)
+			decal.global_transform.origin = rc.get_collision_point()
+			decal.look_at(rc.get_collision_point() + rc.get_collision_normal(), Vector3.UP)
+			if c.is_in_group('Enemy'):
+				c.queue_free()
