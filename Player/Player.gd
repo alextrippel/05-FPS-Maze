@@ -13,9 +13,12 @@ onready var rc = $Pivot/RayCast
 onready var flash = $Pivot/blaster/Flash
 onready var Decal = preload('res://Player/Decal.tscn')
 
+var id = 0
+
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	$Pivot/Camera.current = true
+	#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#$Pivot/Camera.current = true
+	pass
 
 func get_input():
 	var input_dir = Vector3()
@@ -48,7 +51,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed('shoot') and !flash.visible:
 		flash.shoot()
-		print(global_translation)
 		if rc.is_colliding():
 			var c = rc.get_collider()
 			var decal = Decal.instance()
