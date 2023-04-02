@@ -3,15 +3,11 @@ extends KinematicBody
 onready var Camera = $Pivot/Camera
 
 var gravity = -30
-var max_speed = 9
+var max_speed = 8
 var mouse_sensitivity = 0.002
 var mouse_range = 1.2
-var grounded = true
-var velocity = Vector3()
 
-onready var rc = $Pivot/RayCast
-onready var flash = $Pivot/blaster/Flash
-onready var Decal = preload('res://Player/Decal.tscn')
+var velocity = Vector3()
 
 var id = 0
 
@@ -46,6 +42,7 @@ func _physics_process(delta):
 	velocity.x = desired_velocity.x
 	velocity.z = desired_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP, true)
+<<<<<<< HEAD
 	if is_on_floor():
 		grounded = true
 	
@@ -59,3 +56,5 @@ func _physics_process(delta):
 			decal.look_at(rc.get_collision_point() + rc.get_collision_normal(), Vector3.UP)
 			if c.is_in_group('Enemy'):
 				c.queue_free()
+=======
+>>>>>>> parent of 108cc60 (weapon, maze, and ui)

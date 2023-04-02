@@ -19,22 +19,16 @@ surfaces/0 = {
 }
 
 [sub_resource type="SphereShape" id=2]
-radius = 0.5
+radius = 0.3
 
 [node name="Key" type="Area"]
 script = ExtResource( 2 )
 
 [node name="key" type="MeshInstance" parent="."]
-transform = Transform( -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.1, 0.2, 0 )
 mesh = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
 shape = SubResource( 2 )
-
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0 )
-light_color = Color( 0, 0.784314, 0.784314, 1 )
-omni_range = 3.0
 
 [connection signal="body_entered" from="." to="." method="_on_Key_body_entered"]

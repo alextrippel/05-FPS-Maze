@@ -1,14 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/lambert1.material" type="Material" id=1]
 [ext_resource path="res://Assets/zombie.tres" type="Material" id=2]
 [ext_resource path="res://Enemy/Enemy.gd" type="Script" id=3]
-
-[sub_resource type="BoxShape" id=7]
-extents = Vector3( 0.669945, 1.17784, 0.45206 )
-
-[sub_resource type="SphereShape" id=8]
-radius = 6.0
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "basicCharacter_Body1_1"
@@ -100,14 +94,42 @@ surfaces/0 = {
 "vertex_count": 32
 }
 
-[sub_resource type="CylinderShape" id=9]
-height = 3.0
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 4, 10, 1 )
 
-[node name="Enemy" type="KinematicBody" groups=["Enemy"]]
+[sub_resource type="SphereShape" id=8]
+radius = 50.0
+
+[node name="Enemy" type="Area"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 script = ExtResource( 3 )
 
+[node name="Body1" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="Head1" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="ArmLeft1" type="MeshInstance" parent="."]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 2 )
+
+[node name="ArmRight1" type="MeshInstance" parent="."]
+mesh = SubResource( 4 )
+material/0 = ExtResource( 2 )
+
+[node name="LegLeft1" type="MeshInstance" parent="."]
+mesh = SubResource( 5 )
+material/0 = ExtResource( 2 )
+
+[node name="LegRight1" type="MeshInstance" parent="."]
+mesh = SubResource( 6 )
+material/0 = ExtResource( 2 )
+
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22706, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0 )
 shape = SubResource( 7 )
 
 [node name="Sound" type="Area" parent="."]
@@ -115,44 +137,5 @@ shape = SubResource( 7 )
 [node name="CollisionShape" type="CollisionShape" parent="Sound"]
 shape = SubResource( 8 )
 
-[node name="Spatial" type="Spatial" parent="." groups=["Enemy"]]
-transform = Transform( -0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, 0, 0, 0 )
-
-[node name="Body1" type="MeshInstance" parent="Spatial"]
-mesh = SubResource( 1 )
-skeleton = NodePath("../..")
-material/0 = ExtResource( 2 )
-
-[node name="Head1" type="MeshInstance" parent="Spatial"]
-mesh = SubResource( 2 )
-skeleton = NodePath("../..")
-material/0 = ExtResource( 2 )
-
-[node name="ArmLeft1" type="MeshInstance" parent="Spatial"]
-mesh = SubResource( 3 )
-skeleton = NodePath("../..")
-material/0 = ExtResource( 2 )
-
-[node name="ArmRight1" type="MeshInstance" parent="Spatial"]
-mesh = SubResource( 4 )
-skeleton = NodePath("../..")
-material/0 = ExtResource( 2 )
-
-[node name="LegLeft1" type="MeshInstance" parent="Spatial"]
-mesh = SubResource( 5 )
-skeleton = NodePath("../..")
-material/0 = ExtResource( 2 )
-
-[node name="LegRight1" type="MeshInstance" parent="Spatial"]
-mesh = SubResource( 6 )
-skeleton = NodePath("../..")
-material/0 = ExtResource( 2 )
-
-[node name="Kill" type="Area" parent="."]
-
-[node name="CollisionShape" type="CollisionShape" parent="Kill"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35353, 0 )
-shape = SubResource( 9 )
-
+[connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]
 [connection signal="body_entered" from="Sound" to="." method="_on_Sound_body_entered"]
-[connection signal="body_entered" from="Kill" to="." method="_on_Kill_body_entered"]
