@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Assets/explosive_barrel.glb" type="PackedScene" id=1]
+[ext_resource path="res://Barrel/Explosive.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Boom/Lava004_1K_Roughness.jpg" type="Texture" id=3]
+[ext_resource path="res://Assets/Boom/Lava004_1K_NormalGL.jpg" type="Texture" id=4]
+[ext_resource path="res://Assets/Boom/Lava004_1K_Color.jpg" type="Texture" id=5]
+[ext_resource path="res://Assets/Boom/Lava004_1K_Emission.jpg" type="Texture" id=6]
+
+[sub_resource type="CylinderShape" id=1]
+height = 1.02918
+radius = 0.35
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_texture = ExtResource( 5 )
+roughness_texture = ExtResource( 3 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = ExtResource( 6 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = ExtResource( 4 )
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.2
+
+[node name="explosive_barrel" groups=["Boom"] instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+
+[node name="Mainbody" type="KinematicBody" parent="." index="1" groups=["Boom"]]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Mainbody" index="0"]
+shape = SubResource( 1 )
+
+[node name="Visual" type="CSGSphere" parent="Mainbody" index="1"]
+radius = 0.2
+material = SubResource( 3 )
+
+[node name="Kill" type="Area" parent="Mainbody" index="2"]
+
+[node name="DeathShape" type="CollisionShape" parent="Mainbody/Kill" index="0"]
+shape = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="Mainbody" index="3"]
+
+[node name="Glow" type="OmniLight" parent="Mainbody" index="4"]
+visible = false
+light_color = Color( 0.843137, 0.576471, 0.113725, 1 )
+light_energy = 30.0
+
+[connection signal="body_entered" from="Mainbody/Kill" to="Mainbody" method="_on_Kill_body_entered"]
+[connection signal="tween_all_completed" from="Mainbody/Tween" to="Mainbody" method="_on_Tween_tween_all_completed"]

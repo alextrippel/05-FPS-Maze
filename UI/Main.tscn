@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.266667, 0.266667, 0.266667, 1 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Intro" type="Label" parent="."]
 margin_right = 1024.0
 margin_bottom = 300.0
 text = "Welcome to the Maze!
@@ -41,6 +41,12 @@ margin_top = 30.0
 margin_right = 100.0
 margin_bottom = 70.0
 text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+margin_left = -595.0
+margin_top = 878.0
+margin_right = -555.0
+margin_bottom = 892.0
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
