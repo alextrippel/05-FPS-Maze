@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Enemy/Enemies.gd" type="Script" id=2]
@@ -13,6 +13,10 @@
 [ext_resource path="res://Assets/star1.png" type="Texture" id=11]
 [ext_resource path="res://UI/Score.gd" type="Script" id=12]
 [ext_resource path="res://Barrel/Barrels.gd" type="Script" id=13]
+[ext_resource path="res://Assets/HealthOverlay.png" type="Texture" id=14]
+[ext_resource path="res://UI/TextureProgress.gd" type="Script" id=15]
+[ext_resource path="res://Assets/FullHealth.png" type="Texture" id=16]
+[ext_resource path="res://Assets/MissingHealth.png" type="Texture" id=17]
 
 [sub_resource type="CapsuleShape" id=4]
 radius = 0.5
@@ -20,9 +24,6 @@ height = 1.5
 
 [sub_resource type="BoxShape" id=5]
 extents = Vector3( 0.2, 0.1, 0.2 )
-
-[sub_resource type="BoxShape" id=6]
-extents = Vector3( 0.2, 0.2, 0.2 )
 
 [node name="Game" type="Spatial"]
 
@@ -61,11 +62,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.709 )
 enabled = true
 cast_to = Vector3( 0, 0, -30 )
 
-[node name="ExplCheck" type="Area" parent="Player"]
-
-[node name="CollisionShape" type="CollisionShape" parent="Player/ExplCheck"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-shape = SubResource( 6 )
+[node name="Timer" type="Timer" parent="Player"]
+autostart = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -103,12 +101,22 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 11 )
 
 [node name="Score" type="Label" parent="UI"]
-margin_top = 150.0
+margin_top = 170.0
 margin_right = 150.0
-margin_bottom = 170.0
+margin_bottom = 190.0
 align = 1
 valign = 1
 script = ExtResource( 12 )
+
+[node name="TextureProgress" type="TextureProgress" parent="UI"]
+margin_top = 150.0
+margin_right = 204.0
+margin_bottom = 174.0
+rect_scale = Vector2( 0.735, 0.76 )
+texture_under = ExtResource( 17 )
+texture_over = ExtResource( 14 )
+texture_progress = ExtResource( 16 )
+script = ExtResource( 15 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -123,4 +131,4 @@ volume_db = -10.0
 stream = ExtResource( 7 )
 volume_db = -10.0
 
-[connection signal="area_entered" from="Player/ExplCheck" to="Player" method="_on_ExplCheck_area_entered"]
+[connection signal="timeout" from="Player/Timer" to="Player" method="_on_Timer_timeout"]

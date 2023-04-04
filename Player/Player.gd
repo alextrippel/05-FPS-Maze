@@ -8,6 +8,8 @@ var mouse_sensitivity = 0.002
 var mouse_range = 1.2
 var grounded = true
 var velocity = Vector3()
+var exploded = false
+var safe = true
 
 onready var rc = $Pivot/RayCast
 onready var flash = $Pivot/blaster/Flash
@@ -27,6 +29,9 @@ func get_input():
 		input_dir += -Camera.global_transform.basis.x
 	if Input.is_action_pressed("right"):
 		input_dir += Camera.global_transform.basis.x
+	if Input.is_action_pressed("jump"):
+		if grounded :
+			jump()
 	input_dir = input_dir.normalized()
 	return input_dir
 
@@ -37,33 +42,51 @@ func _unhandled_input(event):
 		$Pivot.rotation.x = clamp($Pivot.rotation.x, -mouse_range, mouse_range)
 
 func _physics_process(delta):
+	if Global.health > 100:
+		Global.health = 100
 	velocity.y += gravity * delta
 	var desired_velocity = get_input() * max_speed
-	
 	velocity.x = desired_velocity.x
 	velocity.z = desired_velocity.z
 	velocity = move_and_slide(velocity, Vector3.UP, true)
 	if is_on_floor():
 		grounded = true
-	
+	if translation.y > 2.2 :
+		safe = false
+		damage(5*delta, 'sky')
+	else:
+		safe = true
+	if translation.y < -2.5 :
+		damage(101, 'sky')
 	if Input.is_action_pressed('shoot') and !flash.visible:
 		flash.shoot()
 		if rc.is_colliding():
 			var c = rc.get_collider()
 			if c.is_in_group('Boom'):
-				Global.score += 50
-				c.explode()
+				if not c.exploding:
+					Global.score += 50
+					c.explode()
 			else:
 				var decal = Decal.instance()
 				rc.get_collider().add_child(decal)
 				decal.global_transform.origin = rc.get_collision_point()
-				decal.look_at(rc.get_collision_point() + rc.get_collision_normal(), Vector3.UP)
+				if decal.global_transform.origin.y < 2.4 :
+					decal.look_at(rc.get_collision_point() + rc.get_collision_normal(), Vector3.UP)
 				if c.is_in_group('Enemy'):
-					Global.score += 20
-					c.queue_free()
-			
+					if not c.dying:
+						Global.score += 20
+						c.death()
+
+func jump():
+	velocity.y += 8
+	grounded = false	
+
+func damage(d, cause):
+	Global.health -= d
+	if Global.health <= 0:
+		Global.die(cause)
 
 
-func _on_ExplCheck_area_entered(area):
-	if area.get_parent().is_in_group('Boom'):
-		var _scene = get_tree().change_scene('res://UI/Lose2.tscn')
+func _on_Timer_timeout():
+	if Global.health < 100 and safe == true:
+		Global.health += 2

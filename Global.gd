@@ -5,6 +5,7 @@ const SAVE_PATH = "res://settings.cfg"
 var save_file = ConfigFile.new()
 var inputs = ["left","right","forward","back"]
 onready var score = 0
+onready var health = 100
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
@@ -47,3 +48,11 @@ func save_input():
 		for a in actions:
 			save_file.set_value("Inputs", i, a)
 	save_file.save(SAVE_PATH)
+
+func die(cause):
+	if cause == 'Explosive':
+		var _scene = get_tree().change_scene('res://UI/Lose2.tscn')
+	elif cause == "Enemy":
+		var _scene = get_tree().change_scene('res://UI/Lose.tscn')
+	else :
+		var _scene = get_tree().change_scene('res://UI/Lose3.tscn')
