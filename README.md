@@ -16,11 +16,12 @@ Minimap to show player position in the maze
 Collectable key which opens an exit
 Enemy which deals damage upon contact and makes sounds upon approach, as well as a death effect
 Exploding barrel which deals damage if too close, and can blast the player upwards
-Player takes damage while on top of walls to prevent walking atop the maze
+Player takes damage while on top of walls to prevent walking atop the maze too long (but still useful for some shortcuts)
 Game open screen, pause screen with button remapping
 CSG blocks that impede progress until shot and destroyed
 Visible healthbar
-Red screen effect when taking damage
+Gradual health regain
+Directional Overhead Light
 
 ## References
 [Blaster kit, provided by kenney.nl] (https://kenney.nl/assets/blaster-kit#inline-download)
@@ -30,10 +31,13 @@ Red screen effect when taking damage
 [Explosive Barrel, provided by JoeDev](https://sketchfab.com/3d-models/explosive-barrel-b2ea1a6d0ef042f9881415b2c58650f5)
 [Lava 004, provided by Lennart Demes](https://ambientcg.com/view?id=Lava004)
 [Tiles 086, provided by Lennart Demes](https://ambientcg.com/view?id=Tiles086)
-[Bircks 066, provided by Lennart Demes](https://ambientcg.com/view?id=Bricks066)
+[Bricks 066, provided by Lennart Demes](https://ambientcg.com/view?id=Bricks066)
+[Planks 020, provided by Lennart Demes](https://ambientcg.com/view?id=Planks020)
+[explosion_big_01.ogg, provided by derplayer at freesound](https://freesound.org/people/derplayer/sounds/587194/)
 
 ## Future Development
-None
+More accurate explosion effect on player velocity
+Wooden box textures in removed area
 
 ## Created by
 Alexander Trippel

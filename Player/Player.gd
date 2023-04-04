@@ -60,22 +60,36 @@ func _physics_process(delta):
 		damage(101, 'sky')
 	if Input.is_action_pressed('shoot') and !flash.visible:
 		flash.shoot()
-		if rc.is_colliding():
-			var c = rc.get_collider()
-			if c.is_in_group('Boom'):
-				if not c.exploding:
-					Global.score += 50
-					c.explode()
-			else:
-				var decal = Decal.instance()
-				rc.get_collider().add_child(decal)
-				decal.global_transform.origin = rc.get_collision_point()
-				if decal.global_transform.origin.y < 2.4 :
-					decal.look_at(rc.get_collision_point() + rc.get_collision_normal(), Vector3.UP)
-				if c.is_in_group('Enemy'):
-					if not c.dying:
-						Global.score += 20
-						c.death()
+		playershoot()
+		
+func playershoot():
+	if rc.is_colliding():
+		var c = rc.get_collider()
+		var p = $Pivot/RayCast.get_collision_point()
+		if c.is_in_group('Boom'):
+			if not c.exploding:
+				Global.score += 50
+				c.explode()
+		elif c.is_in_group('Enemy'):
+				if not c.dying:
+					Global.score += 20
+					c.death()
+		elif c.is_in_group('Wood'):
+			var hole = CSGSphere.new()
+			hole.radius = .75
+			hole.operation = CSGShape.OPERATION_SUBTRACTION
+			c.add_child(hole)
+			hole.global_translation = p
+			if c.get_child_count() > 11:
+				c.queue_free()
+				Global.score += 10
+		else:
+			var decal = Decal.instance()
+			rc.get_collider().add_child(decal)
+			decal.global_transform.origin = rc.get_collision_point()
+			if decal.global_transform.origin.y < 2.4 :
+				decal.look_at(rc.get_collision_point() + rc.get_collision_normal(), Vector3.UP)
+				
 
 func jump():
 	velocity.y += 8

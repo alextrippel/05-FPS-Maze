@@ -6,19 +6,22 @@ onready var exploding = false
 
 func explode():
 	exploding = true
+	var sound = get_node_or_null('/root/Game/Boom')
+	if sound != null:
+		sound.playing = true
 	$Glow.show()
 	$Tween.interpolate_property($Kill, "scale", Vector3(1,1,1), Vector3(20,20,20), 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.interpolate_property($Visual, "radius", .2, 5, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	$Tween.start()
 
 func _on_Kill_body_entered(body):
-	if body.is_in_group("Enemy"):
+	if body.is_in_group("Enemy") or body.is_in_group('Wood'):
 		body.queue_free()
 	if body.is_in_group("Boom") and !exploding and body.name != self.name:
 		body.explode()
 	if body.name == 'Player' and body.exploded == false:
 		body.velocity.y += 15
-		body.damage(75, "Explosive")
+		body.damage(60, "Explosive")
 		body.exploded = true
 		#var _scene = get_tree().change_scene('res://UI/Lose2.tscn')
 
