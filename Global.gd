@@ -6,6 +6,7 @@ var save_file = ConfigFile.new()
 var inputs = ["left","right","forward","back"]
 onready var score = 0
 onready var health = 100
+var time_string = ''
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS

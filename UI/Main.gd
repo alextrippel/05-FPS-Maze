@@ -3,7 +3,7 @@ extends Control
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	if $Label != null:
-		$Label.text += "Score: " + str(Global.score)
+		$Label.text += "Score: " + str(Global.score) + "\nFinal Time: " + Global.time_string
 
 func _on_Play_pressed():
 	var _scene = get_tree().change_scene('res://Game.tscn')

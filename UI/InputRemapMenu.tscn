@@ -62,13 +62,13 @@ __meta__ = {
 
 [node name="Left" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
 margin_right = 320.0
-margin_bottom = 67.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Left"]
 margin_right = 158.0
-margin_bottom = 67.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Move Left"
@@ -78,22 +78,22 @@ valign = 1
 [node name="RemapButton" parent="RemapButtonGroup/ActionsList/Left" instance=ExtResource( 1 )]
 margin_left = 162.0
 margin_right = 320.0
-margin_bottom = 67.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 group = SubResource( 1 )
 action = "left"
 
 [node name="Right" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
-margin_top = 71.0
+margin_top = 47.0
 margin_right = 320.0
-margin_bottom = 138.0
+margin_bottom = 90.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Right"]
 margin_right = 158.0
-margin_bottom = 67.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Move Right"
@@ -103,22 +103,22 @@ valign = 1
 [node name="RemapButton" parent="RemapButtonGroup/ActionsList/Right" instance=ExtResource( 1 )]
 margin_left = 162.0
 margin_right = 320.0
-margin_bottom = 67.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 group = SubResource( 1 )
 action = "right"
 
 [node name="Forward" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
-margin_top = 142.0
+margin_top = 94.0
 margin_right = 320.0
-margin_bottom = 209.0
+margin_bottom = 137.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Forward"]
 margin_right = 158.0
-margin_bottom = 67.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Forward"
@@ -128,22 +128,22 @@ valign = 1
 [node name="RemapButton" parent="RemapButtonGroup/ActionsList/Forward" instance=ExtResource( 1 )]
 margin_left = 162.0
 margin_right = 320.0
-margin_bottom = 67.0
+margin_bottom = 43.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 group = SubResource( 1 )
 action = "forward"
 
 [node name="Back" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
-margin_top = 213.0
+margin_top = 141.0
 margin_right = 320.0
-margin_bottom = 280.0
+margin_bottom = 185.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Back"]
 margin_right = 158.0
-margin_bottom = 67.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "Back"
@@ -153,11 +153,61 @@ valign = 1
 [node name="RemapButton" parent="RemapButtonGroup/ActionsList/Back" instance=ExtResource( 1 )]
 margin_left = 162.0
 margin_right = 320.0
-margin_bottom = 67.0
+margin_bottom = 44.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 group = SubResource( 1 )
 action = "back"
+
+[node name="Heal" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
+margin_top = 189.0
+margin_right = 320.0
+margin_bottom = 232.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Heal"]
+margin_right = 158.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Use Healing Kit"
+align = 1
+valign = 1
+
+[node name="RemapButton" parent="RemapButtonGroup/ActionsList/Heal" instance=ExtResource( 1 )]
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+group = SubResource( 1 )
+action = "heal"
+
+[node name="Jump" type="HBoxContainer" parent="RemapButtonGroup/ActionsList"]
+margin_top = 236.0
+margin_right = 320.0
+margin_bottom = 280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ActionName" type="Label" parent="RemapButtonGroup/ActionsList/Jump"]
+margin_right = 158.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Jump"
+align = 1
+valign = 1
+
+[node name="RemapButton" parent="RemapButtonGroup/ActionsList/Jump" instance=ExtResource( 1 )]
+margin_left = 162.0
+margin_right = 320.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+group = SubResource( 1 )
+action = "jump"
 
 [node name="Quit" type="Button" parent="."]
 margin_left = 512.0

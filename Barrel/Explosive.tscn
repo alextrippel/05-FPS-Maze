@@ -37,6 +37,7 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Visual" type="CSGSphere" parent="Mainbody" index="1"]
+calculate_tangents = false
 radius = 0.2
 material = SubResource( 3 )
 

@@ -22,6 +22,7 @@ CSG blocks that impede progress until shot and destroyed
 Visible healthbar
 Gradual health regain
 Directional Overhead Light
+Healing item pickup
 
 ## References
 [Blaster kit, provided by kenney.nl] (https://kenney.nl/assets/blaster-kit#inline-download)
@@ -34,10 +35,11 @@ Directional Overhead Light
 [Bricks 066, provided by Lennart Demes](https://ambientcg.com/view?id=Bricks066)
 [Planks 020, provided by Lennart Demes](https://ambientcg.com/view?id=Planks020)
 [explosion_big_01.ogg, provided by derplayer at freesound](https://freesound.org/people/derplayer/sounds/587194/)
+[MedKit, provided by ItsEBtPGyt] (https://sketchfab.com/3d-models/medkit-9aee295bd7dd4b1fb90516235ee73b35)
 
 ## Future Development
 More accurate explosion effect on player velocity
-Wooden box textures in removed area
+Wooden box textures in removed area (did exist, was removed due to causing errors)
 
 ## Created by
 Alexander Trippel

@@ -10,7 +10,7 @@ var grounded = true
 var velocity = Vector3()
 var exploded = false
 var safe = true
-
+var inventory = []
 onready var rc = $Pivot/RayCast
 onready var flash = $Pivot/blaster/Flash
 onready var Decal = preload('res://Player/Decal.tscn')
@@ -32,6 +32,10 @@ func get_input():
 	if Input.is_action_pressed("jump"):
 		if grounded :
 			jump()
+	if Input.is_action_just_pressed('heal'):
+		if 'medkit' in inventory:
+			Global.health = 100
+			inventory.remove('medkit')
 	input_dir = input_dir.normalized()
 	return input_dir
 
@@ -84,11 +88,12 @@ func playershoot():
 				c.queue_free()
 				Global.score += 10
 		else:
-			var decal = Decal.instance()
-			rc.get_collider().add_child(decal)
-			decal.global_transform.origin = rc.get_collision_point()
-			if decal.global_transform.origin.y < 2.4 :
-				decal.look_at(rc.get_collision_point() + rc.get_collision_normal(), Vector3.UP)
+			if not c.is_in_group('health'):
+				var decal = Decal.instance()
+				rc.get_collider().add_child(decal)
+				decal.global_transform.origin = rc.get_collision_point()
+				if decal.global_transform.origin.y < 2.4 :
+					decal.look_at(rc.get_collision_point() + rc.get_collision_normal(), Vector3.UP)
 				
 
 func jump():
@@ -103,4 +108,4 @@ func damage(d, cause):
 
 func _on_Timer_timeout():
 	if Global.health < 100 and safe == true:
-		Global.health += 2
+		Global.health += 1

@@ -14,6 +14,7 @@ var cell_walls = {
 }
 
 var map = []
+var healspots = [Vector3(15, 0, 9),Vector3(17, 0, 19), Vector3(9, 0, 7),Vector3(6, 0, 14),Vector3(13, 0, 2)]
 
 onready var MiniMap = get_node('/root/Game/UI/VP/Map_Container/MiniMap')
 
@@ -63,6 +64,7 @@ var height = 20  						# height of map (in tiles)
 
 onready var Key = preload('res://Key/Key.tscn')
 onready var Exit = preload('res://Exit/Exit.tscn')
+onready var Medkit = preload('res://Key/medkit.tscn')
 
 func _ready():
 	randomize()
@@ -73,6 +75,10 @@ func _ready():
 	var exit = Exit.instance()
 	exit.translate(Vector3(0,0.5,height*tile_size-2))
 	add_child(exit)
+	for n in healspots:
+		var medkit = Medkit.instance()
+		medkit.translate(n)
+		add_child(medkit)
 	
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors

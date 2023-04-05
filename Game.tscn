@@ -148,6 +148,7 @@ volume_db = -20.0
 
 [node name="Woodblock" type="CSGBox" parent="Spatial" groups=["Wood"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.5, 0 )
+calculate_tangents = false
 use_collision = true
 height = 3.0
 material = ExtResource( 19 )
@@ -161,6 +162,7 @@ material = ExtResource( 19 )
 
 [node name="Woodblock2" type="CSGBox" parent="Spatial" groups=["Wood"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 1.5, 22 )
+calculate_tangents = false
 use_collision = true
 height = 3.0
 material = ExtResource( 19 )
@@ -174,6 +176,7 @@ material = ExtResource( 19 )
 
 [node name="Woodblock3" type="CSGBox" parent="Spatial" groups=["Wood"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 1.5, 16 )
+calculate_tangents = false
 use_collision = true
 height = 3.0
 material = ExtResource( 19 )
@@ -187,6 +190,7 @@ material = ExtResource( 19 )
 
 [node name="Woodblock4" type="CSGBox" parent="Spatial" groups=["Wood"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.5, 30 )
+calculate_tangents = false
 use_collision = true
 height = 3.0
 material = ExtResource( 19 )
@@ -200,6 +204,7 @@ material = ExtResource( 19 )
 
 [node name="Woodblock5" type="CSGBox" parent="Spatial" groups=["Wood"]]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 1.5, 10 )
+calculate_tangents = false
 use_collision = true
 height = 3.0
 material = ExtResource( 19 )
