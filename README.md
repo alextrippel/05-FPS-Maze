@@ -4,6 +4,7 @@ First person shooter game made for MSCH C-220 in godot
 
 Description
 A first person shooter in which you avoid death by enemies in order to get an interactable key and reach the exit of a procedurally generated maze
+The game has a timer to provide an incentive for mastery in the form of speed as well as score
 
 ## Implementation
 Created in Godot 3.5
@@ -23,6 +24,7 @@ Visible healthbar
 Gradual health regain
 Directional Overhead Light
 Healing item pickup
+In game playtime clock
 
 ## References
 [Blaster kit, provided by kenney.nl] (https://kenney.nl/assets/blaster-kit#inline-download)
