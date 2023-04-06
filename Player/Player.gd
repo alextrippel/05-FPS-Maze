@@ -14,7 +14,7 @@ var inventory = []
 onready var rc = $Pivot/RayCast
 onready var flash = $Pivot/blaster/Flash
 onready var Decal = preload('res://Player/Decal.tscn')
-
+onready var wood = preload('res://UI/wood.tres')
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$Pivot/Camera.current = true
@@ -57,7 +57,7 @@ func _physics_process(delta):
 		grounded = true
 	if translation.y > 2.2 :
 		safe = false
-		damage(5*delta, 'sky')
+		damage(7.5*delta, 'sky')
 	else:
 		safe = true
 	if translation.y < -2.5 :
@@ -83,6 +83,7 @@ func playershoot():
 			hole.radius = .75
 			hole.operation = CSGShape.OPERATION_SUBTRACTION
 			c.add_child(hole)
+			hole.material = wood
 			hole.global_translation = p
 			if c.get_child_count() > 8:
 				c.queue_free()

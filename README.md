@@ -11,6 +11,7 @@ Created in Godot 3.5
 
 Features:
 Music and sound effects
+Control rebinding
 Controllable player with first person camera and the ability to shoot
 Procedurally Generated Maze with CSG walls
 Minimap to show player position in the maze
@@ -40,8 +41,7 @@ In game playtime clock
 [MedKit, provided by ItsEBtPGyt] (https://sketchfab.com/3d-models/medkit-9aee295bd7dd4b1fb90516235ee73b35)
 
 ## Future Development
-More accurate explosion effect on player velocity
-Wooden box textures in removed area (did exist, was removed due to causing errors)
+None
 
 ## Created by
 Alexander Trippel

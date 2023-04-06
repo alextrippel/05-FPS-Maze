@@ -52,6 +52,8 @@ shape = SubResource( 2 )
 visible = false
 light_color = Color( 0.843137, 0.576471, 0.113725, 1 )
 light_energy = 30.0
+omni_range = 7.5
+omni_attenuation = 1.23114
 
 [node name="RayCast" type="RayCast" parent="Mainbody" index="5"]
 
