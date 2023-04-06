@@ -84,7 +84,7 @@ func playershoot():
 			hole.operation = CSGShape.OPERATION_SUBTRACTION
 			c.add_child(hole)
 			hole.global_translation = p
-			if c.get_child_count() > 11:
+			if c.get_child_count() > 8:
 				c.queue_free()
 				Global.score += 10
 		else:

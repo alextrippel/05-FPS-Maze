@@ -155,9 +155,9 @@ material = ExtResource( 19 )
 
 [node name="CSGBox" type="CSGBox" parent="Spatial/Woodblock"]
 operation = 2
-width = 1.5
+width = 1.35
 height = 3.5
-depth = 1.5
+depth = 1.35
 material = ExtResource( 19 )
 
 [node name="Woodblock2" type="CSGBox" parent="Spatial" groups=["Wood"]]
@@ -169,9 +169,9 @@ material = ExtResource( 19 )
 
 [node name="CSGBox" type="CSGBox" parent="Spatial/Woodblock2"]
 operation = 2
-width = 1.5
+width = 1.35
 height = 3.5
-depth = 1.5
+depth = 1.35
 material = ExtResource( 19 )
 
 [node name="Woodblock3" type="CSGBox" parent="Spatial" groups=["Wood"]]
@@ -183,9 +183,9 @@ material = ExtResource( 19 )
 
 [node name="CSGBox" type="CSGBox" parent="Spatial/Woodblock3"]
 operation = 2
-width = 1.5
+width = 1.35
 height = 3.5
-depth = 1.5
+depth = 1.35
 material = ExtResource( 19 )
 
 [node name="Woodblock4" type="CSGBox" parent="Spatial" groups=["Wood"]]
@@ -197,9 +197,9 @@ material = ExtResource( 19 )
 
 [node name="CSGBox" type="CSGBox" parent="Spatial/Woodblock4"]
 operation = 2
-width = 1.5
+width = 1.35
 height = 3.5
-depth = 1.5
+depth = 1.35
 material = ExtResource( 19 )
 
 [node name="Woodblock5" type="CSGBox" parent="Spatial" groups=["Wood"]]
@@ -211,9 +211,9 @@ material = ExtResource( 19 )
 
 [node name="CSGBox" type="CSGBox" parent="Spatial/Woodblock5"]
 operation = 2
-width = 1.5
+width = 1.35
 height = 3.5
-depth = 1.5
+depth = 1.35
 material = ExtResource( 19 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
