@@ -24,7 +24,7 @@ CSG blocks that impede progress until shot and destroyed
 Visible healthbar
 Gradual health regain
 Directional Overhead Light
-Healing item pickup
+Healing item pickup that can be used on command
 In game playtime clock
 
 ## References

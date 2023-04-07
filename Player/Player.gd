@@ -89,11 +89,11 @@ func playershoot():
 				c.queue_free()
 				Global.score += 10
 		else:
-			if not c.is_in_group('health'):
+			if not c.is_in_group('health') and not c.is_in_group('Decal'):
 				var decal = Decal.instance()
 				rc.get_collider().add_child(decal)
 				decal.global_transform.origin = rc.get_collision_point()
-				if decal.global_transform.origin.y < 2.4 :
+				if rc.get_collision_normal() != Vector3.UP:
 					decal.look_at(rc.get_collision_point() + rc.get_collision_normal(), Vector3.UP)
 				
 
